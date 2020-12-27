@@ -6,7 +6,6 @@ public interface csaRepository {
 
     void saveObjectToDb(Object object);
     void updateObjectFromDb(Object object);
-    void deleteObjectFromDb(Object object);
 
     List<Boerderij> getBoerderijByName(String boerderij);
     List<Boerderij> getBoerderij();

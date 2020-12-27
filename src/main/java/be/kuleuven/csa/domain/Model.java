@@ -11,7 +11,7 @@ import java.sql.DriverManager;
 
 public class Model {
     public static final String TAG = "Model: ";
-    public static final String DBNAME = "csa.db";
+    public static final String DBNAME = "csa";
     //Data members
     private EntityManagerFactory sessionFactory;
     private EntityManager entityManager;
@@ -233,41 +233,6 @@ public class Model {
         //</editor-fold>
     }
 
-    public static void resetAutoIncrementValue() {
-        try {
-            final String ConnectionString = "jdbc:sqlite:"+DBNAME;
-            //Establish connection with the database
-            Connection connection;
-            try {
-                connection = DriverManager.getConnection(ConnectionString);
-                connection.setAutoCommit(false);
-
-            } catch (Exception e) {
-                System.out.println(TAG+"resetAutoIncrementValue: Db connection handle failure");
-                e.printStackTrace();
-                throw new RuntimeException(e);
-            }
-
-            //reset hibernate_sequence -> next_val
-            var sql = "UPDATE hibernate_sequence SET next_val= 1;";
-            //System.out.println(sql);
-            var s = connection.createStatement();
-            s.executeUpdate(sql);
-            s.close();
-
-            //verify next_val contents
-            var s2 = connection.createStatement();
-            var result = s2.executeQuery("SELECT next_val FROM hibernate_sequence");
-            assert result.getInt("next_val") == 1;
-            connection.close();
-
-        } catch (Exception e) {
-            System.out.println(TAG+"resetAutoIncrementValue: Error while initialising db or verifying table content");
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-    }
-
     public static void initialiseStartingDatabaseSQL(String dbName) {
         try {
             final String ConnectionString = "jdbc:sqlite:"+dbName+".db";
@@ -327,27 +292,15 @@ public class Model {
                 object instanceof Verkoopt);
     }
 
-    public EntityManagerFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    public void setSessionFactory(EntityManagerFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
-
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
     public csaRepository getRepo() {
         return repo;
     }
 
     public void setRepo(csaRepository repo) {
         this.repo = repo;
+    }
+
+    public EntityManagerFactory getSessionFactory() {
+        return sessionFactory;
     }
 }
