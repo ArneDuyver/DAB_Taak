@@ -13,10 +13,11 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Button fx:id="btnBoerderijen" layoutX="46.0" layoutY="69.0" mnemonicParsing="false" text="Beheer Boerderijen" />
+      <Button fx:id="btnBoerderijen" layoutX="46.0" layoutY="69.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Boerderijen" />
       <Button fx:id="btnProducten" layoutX="206.0" layoutY="69.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Producten" />
-      <Button fx:id="btnKlanten" layoutX="46.0" layoutY="111.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="136.0" text="Beheer Klanten" />
-      <Button fx:id="btnInschrijvingen" layoutX="206.0" layoutY="111.0" mnemonicParsing="false" text="Beheer Inschrijvingen" />
-      <Button fx:id="btnTips" layoutX="206.0" layoutY="173.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Kooktips" />
+      <Button fx:id="btnKlanten" layoutX="46.0" layoutY="111.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Klanten" />
+      <Button fx:id="btnInschrijvingen" layoutX="206.0" layoutY="111.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Inschrijvingen" />
+      <Button fx:id="btnTips" layoutX="206.0" layoutY="153" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Kooktips" />
+      <Button fx:id="btnPakketbeschrijving" layoutX="46.0" layoutY="153.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Pakketbeschrijvingen" />
    </children>
 </AnchorPane>
