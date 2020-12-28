@@ -46,3 +46,5 @@ gradle-app.setting
 *.iws
 
 couchdb.properties
+*.mp3
+*.mp4
