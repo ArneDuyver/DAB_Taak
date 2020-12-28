@@ -1,5 +1,7 @@
 package be.kuleuven.csa.domain;
 
+import be.kuleuven.csa.ResourceHelper;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -11,6 +13,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Model {
     public static final String TAG = "Model: ";
@@ -21,8 +24,10 @@ public class Model {
     private csaRepository repo;
 
     public static void main(String[] args) {
+        //TODO: Make sure in "persistence.xml" value of "javax.persistence.schema-generation.database.action" is "drop-and-create"
         Model model = new Model();
         model.initialise();
+        //TODO: Reset that value back to "none" before running the application
     }
 
     public Model(){
@@ -147,7 +152,6 @@ public class Model {
         var haaltAf_10 = new HaaltAf(behoortTot_15,klant_4);
             //</editor-fold>
         //</editor-fold>
-
         //<editor-fold desc="Persisting objects">
         repo.saveObjectToDb(boerderij_1);
         repo.saveObjectToDb(boerderij_2);

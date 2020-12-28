@@ -1,5 +1,6 @@
 package be.kuleuven.csa;
 
+import be.kuleuven.csa.domain.Model;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,12 +17,14 @@ public class ProjectMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+//        Model model = new Model();
+//        model.initialise();
         rootStage = stage;
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("csamain.fxml"));
 
         Scene scene = new Scene(root);
 
-        stage.setTitle("CSA Administratie hoofdscherm");
+        stage.setTitle(ResourceHelper.getString("program_title"));
         stage.setScene(scene);
         stage.show();
     }

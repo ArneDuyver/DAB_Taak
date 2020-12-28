@@ -79,7 +79,7 @@ public class CouchDbClientTest {
         model.initialise();
         ArrayList<ProductTips> tips = new CouchDbClient().getAllProductTips();
         Assert.assertNotNull("result should not be null", tips);
-        Assert.assertTrue("Size should be 0", tips.size()==9);
+        Assert.assertTrue("Size should be 9", tips.size()==9);
     }
 
     @Test
