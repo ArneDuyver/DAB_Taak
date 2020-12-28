@@ -26,6 +26,7 @@ public interface csaRepository {
     void deleteKlant(Klant klant);
 
     List<Pakketbeschrijving> getPakketbeschrijvingByName(String pakketbeschrijving);
+    List<Pakketbeschrijving> getPakketbeschijving();
     void saveNewPakketbeschrijving(Pakketbeschrijving pakketbeschrijving);
     void updatePakketbeschrijving(Pakketbeschrijving pakketbeschrijving);
     void deletePakketbeschrijving(Pakketbeschrijving pakketbeschrijving);
