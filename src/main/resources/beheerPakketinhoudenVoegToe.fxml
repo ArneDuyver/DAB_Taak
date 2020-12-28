@@ -9,11 +9,10 @@
 
 
 <?import javafx.scene.control.TextField?>
-<AnchorPane prefHeight="100" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.kuleuven.csa.controller.BeheerProductenVoegToeController">
+<AnchorPane prefHeight="100" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.kuleuven.csa.controller.BeheerPakketinhoudVoegToeController">
     <children>
         <TextField fx:id="tfNaam" layoutX="8" layoutY="25" promptText="naam"></TextField>
-        <TextField fx:id="tfSoort" layoutX="158" layoutY="25" promptText="Soort"></TextField>
-        <Text layoutX="10" layoutY="10" strokeType="OUTSIDE" strokeWidth="0.0" text="Voeg Boerderij toe" wrappingWidth="567.21875">
+        <Text layoutX="10" layoutY="10" strokeType="OUTSIDE" strokeWidth="0.0" text="Voeg pakketinhoud toe" wrappingWidth="567.21875">
             <font>
                 <Font name="System Bold Italic" size="13.0" />
             </font>
@@ -21,3 +20,4 @@
         <Button fx:id="btnAdd" layoutX="16.0" layoutY="60" mnemonicParsing="false" text="Voeg Toe" />
     </children>
 </AnchorPane>
+

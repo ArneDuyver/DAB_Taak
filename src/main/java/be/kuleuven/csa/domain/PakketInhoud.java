@@ -32,6 +32,9 @@ public class PakketInhoud {
         this.bevatList = new ArrayList<>();
     }
 
+    public PakketInhoud() {
+    }
+
     public List<Bevat> getBevatList() {
         return bevatList;
     }
@@ -50,5 +53,13 @@ public class PakketInhoud {
 
     public int getPakketInhoudId() {
         return pakketInhoudId;
+    }
+
+    @Override
+    public String toString() {
+        return "PakketInhoud{" +
+                "pakketInhoudId=" + pakketInhoudId +
+                ", naam='" + naam + '\'' +
+                '}';
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<AnchorPane prefHeight="100" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.kuleuven.csa.controller.BeheerBevatVoegToeController">
+    <children>
+        <TextField fx:id="tfHoeveelheid" layoutX="8" layoutY="25" promptText="hoeveelheid"></TextField>
+        <TextField fx:id="tfEenheid" layoutX="158" layoutY="25" promptText="eenheid"></TextField>
+        <ComboBox fx:id="cbProducten" layoutX="308" layoutY="25" promptText="producten"></ComboBox>
+        <Text layoutX="10" layoutY="10" strokeType="OUTSIDE" strokeWidth="0.0" text="Voeg Bevat toe" wrappingWidth="567.21875">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font>
+        </Text>
+        <Button fx:id="btnAdd" layoutX="16.0" layoutY="60" mnemonicParsing="false" text="VoegToe" />
+    </children>
+</AnchorPane>
+
+

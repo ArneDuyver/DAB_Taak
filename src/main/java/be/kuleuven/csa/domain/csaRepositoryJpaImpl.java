@@ -139,7 +139,7 @@ public class csaRepositoryJpaImpl implements csaRepository {
         var root = query.from(Pakketbeschrijving.class);
 
         query.where(criteriabuilder.equal(root.get("naam"), pakketbeschrijving));
-        return entityManager.createQuery(query).getResultList() ;
+        return entityManager.createQuery(query).getResultList();
     }
 
     @Override
@@ -215,6 +215,15 @@ public class csaRepositoryJpaImpl implements csaRepository {
     }
 
     @Override
+    public List<PakketInhoud> getPakketinhouden() {
+        var criteriaBuilder = entityManager.getCriteriaBuilder();
+        var query = criteriaBuilder.createQuery(PakketInhoud.class);
+        var root = query.from(PakketInhoud.class);
+        var all = query.select(root);
+        return entityManager.createQuery(all).getResultList();
+    }
+
+    @Override
     public void saveNewPakketinhoud(PakketInhoud pakketInhoud) {
         entityManager.getTransaction().begin();
         entityManager.persist(pakketInhoud);
@@ -254,6 +263,15 @@ public class csaRepositoryJpaImpl implements csaRepository {
         entityManager.getTransaction().begin();
         entityManager.remove(behoortTot);
         entityManager.getTransaction().commit();
+    }
+
+    @Override
+    public List<Bevat> getBevat(PakketInhoud pakketinhoud) {
+        var criteriabuilder = entityManager.getCriteriaBuilder();
+        var query = criteriabuilder.createQuery(Bevat.class);
+        var root = query.from(Bevat.class);
+        query.where(criteriabuilder.equal(root.get("pakketInhoud"), pakketinhoud));
+        return entityManager.createQuery(query).getResultList() ;
     }
 
     @Override

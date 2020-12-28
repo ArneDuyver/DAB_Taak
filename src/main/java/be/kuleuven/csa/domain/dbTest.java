@@ -43,7 +43,7 @@ public class dbTest {
             var testdelete =new Boerderij("nieuwhuis", "Boshoeve 11", "kamiel.allard@hotmail.com","BE45 4555 4555 4555");
             //repo.deleteBoerderij(testdelete);// werkt niet want id gaat omhoog
             //repo.deleteBoerderij(nieuwhuis);// werkt wel
-
+            isBevatEr(repo, pakketinhoud);
             isBoerderijEr(repo);
             isKlantEr(repo);
             isProductEr(repo);
@@ -68,6 +68,12 @@ public class dbTest {
             System.out.println("Is Klant er?");
             for(var eenStudent : repo.getKlantByName("Allard Kamiel")) {
                 System.out.println(eenStudent);
+            }
+        }
+        private static void isBevatEr(csaRepositoryJpaImpl repo,PakketInhoud pakketInhoud) {
+            System.out.println("Is bevat er?");
+            for(var eenStudent : repo.getBevat(pakketInhoud)) {
+                System.out.println(eenStudent.getEenheid());
             }
         }
 }
