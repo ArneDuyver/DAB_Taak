@@ -6,8 +6,11 @@ import javax.persistence.Persistence;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Model {
     public static final String TAG = "Model: ";
@@ -19,8 +22,7 @@ public class Model {
 
     public static void main(String[] args) {
         Model model = new Model();
-        model.initialiseStartingDatabaseJPA();
-        initialiseStartingDatabaseSQL("csaSqlTest");
+        model.initialise();
     }
 
     public Model(){
@@ -29,6 +31,10 @@ public class Model {
         entityManager = sessionFactory.createEntityManager();
         System.out.println("Bootstrapping Repository...");
         repo = new csaRepositoryJpaImpl(entityManager);
+    }
+    public void initialise(){
+        initialiseStartingDatabaseJPA();
+        initialiseNoSqlDb();
     }
     public void initialiseStartingDatabaseJPA(){
         //<editor-fold desc="Instantiating objects">
@@ -231,6 +237,60 @@ public class Model {
         repo.saveObjectToDb(haaltAf_9);
         repo.saveObjectToDb(haaltAf_10);
         //</editor-fold>
+    }
+    public void initialiseNoSqlDb(){
+        //Remove all entries
+        new CouchDbClient().clearDb();
+        //Initialise new products
+        List<Product> products = repo.getProduct();
+        for(Product p: products){
+            new CouchDbClient().saveProductTip(new ProductTips(p.getNaam(),p.getSoort(),p.getProductId()));
+        }
+        //Initialise broccoli tips
+        ProductTips broccoli = new CouchDbClient().getProductTips(1);
+        ArrayList<String> broccolilinks = new ArrayList<>();
+        broccolilinks.add("https://www.hellofresh.be/recipes/quiche-met-broccoli-en-oude-kaas-5fb4fcd8e4796b6d4f4fb83d");
+        broccoli.setLinks(broccolilinks);
+        new CouchDbClient().updateProductTip(broccoli);
+        //Initialise spruitjes tips
+        ProductTips spruitjes = new CouchDbClient().getProductTips(2);
+        ArrayList<String> spruitjesrecipes = new ArrayList<>();
+        spruitjesrecipes.add( "1 Maak de spruitjes schoon en blancheer ze 5 minuten in lichtgezouten water. Laat ze meteen schrikken in ijswater en goed uitlekken.\n2 Schil de aardappelen en snij ze in blokjes van 1,5 cm. Kook ze in 10 à 15 minuten beetgaar in lichtgezouten water. Giet af en laat uitlekken.\n3 Pel en hak de sjalot en de knoflook. Bak het spek uit in een pan zonder vetstof. Doe er de sjalot en knoflook bij en stoof ze glazig. Voeg de aardappelen en spruitjes toe en roerbak ze goudbruin. Kruid met peper, zout en nootmuskaat.");
+        broccoli.setRecipes(spruitjesrecipes);
+        new CouchDbClient().updateProductTip(spruitjes);
+        //Initialise serranoham tips
+        ProductTips serranoham = new CouchDbClient().getProductTips(3);
+        ArrayList<String> serranohamlinks = new ArrayList<>();
+        serranohamlinks.add("https://www.hellofresh.be/recipes/rijst-in-tomatenroomsaus-met-serranoham-5fb4fd1e3190551beb3cae33");
+        serranoham.setLinks(serranohamlinks);
+        ArrayList<String> serranohamrecipes = new ArrayList<>();
+        serranohamrecipes.add("Meloen in serranoham: \nHalveer de meloen en schep de zaadjes eruit. Snijd elke helft in stukken, verwijder daarna de schil en snijd eventueel de stukken in dunnere plakken. Besprenkel de meloen met de olijfolie. Wikkel elk plakje meloen in een stukje ham en steek het vast met een cocktailprikker. Bestrooi de hapjes met (versgemalen) peper.\nTip:\nLaat de meloen na het besprenkelen enige tijd staan: hij wordt dan gemarineerd in de zoetige basilicumolie.");
+        serranoham.setRecipes(serranohamrecipes);
+        new CouchDbClient().updateProductTip(serranoham);
+        //Initialise hyacint tips
+        ProductTips hyacint = new CouchDbClient().getProductTips(4);
+        ArrayList<String> hyacintlinks = new ArrayList<>();
+        hyacintlinks.add("https://www.allesoverbloembollen.nl/bloembollen-soorten/voorjaarsbloeiende-bolgewassen/hyacint/#:~:text=PLANTEN%20HYACINT,een%20halve%20dag%20zon%20nodig");
+        hyacint.setLinks(hyacintlinks);
+        ArrayList<String> hyacinttips = new ArrayList<>();
+        hyacinttips.add("Koop stevige, gezonde, grote bloembollen of knollen die gelijkmatig van vorm zijn.");
+        hyacinttips.add("Door het verschil van voorjaars-, zomer- en herfstbloeiende bloembollen, knollen en wortelstokken, is het wel duidelijk dat ieder soort op een ander moment bloeit.");
+        hyacint.setTips(hyacinttips);
+        new CouchDbClient().updateProductTip(hyacint);
+        //Initialise bloedappelsien tips
+        ProductTips bloedappelsien = new CouchDbClient().getProductTips(5);
+        ArrayList<String> bloedappelsienlinks = new ArrayList<>();
+        bloedappelsienlinks.add("https://15gram.be/recepten/citrusdessert-met-bloedappelsien");
+        bloedappelsienlinks.add("https://www.elle.be/nl/295380-recept-een-salade-vol-vitamines-met-bloedsinaasappel-en-burrata.html");
+        bloedappelsien.setLinks(bloedappelsienlinks);
+        ArrayList<String> bloedappelsienExtra_info = new ArrayList<>();
+        bloedappelsienExtra_info.add("De bloedappelsien is relatief nieuw in de citrusfamilie. Men zegt dat hij voor het eerst rond 1850 werd gekweekt, al is de soort waarschijnlijk al in de zeventiende eeuw ontstaan als gevolg van mutatie. Pas eeuwen later zou hij verfijnd zijn tot de bloedrode zeg maar bloedmooie - vrucht die we nu kennen.");
+        bloedappelsien.setExtra_info(bloedappelsienExtra_info);
+        ArrayList<String> bloedappelsienrecipes = new ArrayList<>();
+        bloedappelsienrecipes.add("Kruidige mocktail met bloedsinaasappel: \nDoe in elk glas een eetlepel vlierbloesemsiroop, 100 milliliter bloedsinaasappelsap, 100 milliliter tonic, een takje tijm en ijsblokjes.");
+        bloedappelsienrecipes.add("Een klassieke beurre blanc voor bij vis ziet er plots anders, speelser, uit met wat bloedappelsiensap. Bloedappelsiensorbet is een verfrissend en licht nagerecht. Ook in salades oogt het vruchtvlees van de bloedappelsien mooi. Vooral dan in salades op basis van vis of zeevruchten: tijgergarnalen, jakobsvruchten of inktvis hebben een lichtzure touch nodig om de eigen zoetheid beter te doen uitkomen.");
+        bloedappelsien.setRecipes(bloedappelsienrecipes);
+        new CouchDbClient().updateProductTip(bloedappelsien);
     }
 
     public static void initialiseStartingDatabaseSQL(String dbName) {
