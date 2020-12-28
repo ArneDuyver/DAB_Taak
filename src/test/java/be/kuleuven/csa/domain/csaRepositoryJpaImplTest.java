@@ -148,7 +148,7 @@ public class csaRepositoryJpaImplTest {
     public void getBoerderij_4() {
         List<Boerderij> result = repo.getBoerderij();
         Assert.assertNotNull("result should not be null", result);
-        Assert.assertTrue("resultset should be one", result.size() == 4);
+        Assert.assertTrue("resultset should be four", result.size() == 4);
     }
 
     //TODO: write more get tests
