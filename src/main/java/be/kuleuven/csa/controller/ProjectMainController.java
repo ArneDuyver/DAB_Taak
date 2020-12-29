@@ -28,6 +28,8 @@ public class ProjectMainController {
     private Button btnPakketbeschrijving;
     @FXML
     private Button btnWeekPaketten;
+    @FXML
+    private Button btnContracten;
 
     public void initialize() {
         btnBoerderijen.setOnAction(e -> showBeheerScherm("boerderijen"));
@@ -37,6 +39,7 @@ public class ProjectMainController {
         btnProducten.setOnAction(e -> showBeheerScherm("producten"));
         btnPakketbeschrijving.setOnAction(e -> showBeheerScherm("pakketbeschrijvingen"));
         btnWeekPaketten.setOnAction(event -> showBeheerScherm("pakketinhouden"));
+        btnContracten.setOnAction(event -> showBeheerScherm("verkopen"));
     }
 
     private void showBeheerScherm(String id) {

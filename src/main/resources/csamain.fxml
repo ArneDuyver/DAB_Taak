@@ -20,5 +20,6 @@
       <Button fx:id="btnTips" layoutX="206.0" layoutY="153" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Kooktips" />
       <Button fx:id="btnPakketbeschrijving" layoutX="46.0" layoutY="153.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Pakketbeschrijvingen" />
       <Button fx:id="btnWeekPaketten" layoutX="46.0" layoutY="195.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer weekpakketen" />
+      <Button fx:id="btnContracten" layoutX="206.0" layoutY="195.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Contracten" />
    </children>
 </AnchorPane>

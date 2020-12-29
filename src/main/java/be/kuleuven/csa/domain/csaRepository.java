@@ -31,6 +31,7 @@ public interface csaRepository {
     void updatePakketbeschrijving(Pakketbeschrijving pakketbeschrijving);
     void deletePakketbeschrijving(Pakketbeschrijving pakketbeschrijving);
 
+    List<Verkoopt> getVerkopen();
     void saveNewVerkoopt(Verkoopt verkoopt);
     void updateVerkoopt(Verkoopt verkoopt);
     void deleteVerkoopt(Verkoopt verkoopt);

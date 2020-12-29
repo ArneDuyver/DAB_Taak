@@ -45,6 +45,9 @@ public class Verkoopt {
         this.behoortTotList = new ArrayList<>();
     }
 
+    public Verkoopt() {
+    }
+
     public List<BehoortTot> getBehoortTotList() {
         return behoortTotList;
     }
@@ -78,4 +81,15 @@ public class Verkoopt {
         this.boerderij = boerderij;
     }
 
+    public Pakketbeschrijving getPakketbeschrijving() {
+        return pakketbeschrijving;
+    }
+
+    public void setPakketbeschrijving(Pakketbeschrijving pakketbeschrijving) {
+        this.pakketbeschrijving = pakketbeschrijving;
+    }
+
+    public int getVerkooptId() {
+        return verkooptId;
+    }
 }

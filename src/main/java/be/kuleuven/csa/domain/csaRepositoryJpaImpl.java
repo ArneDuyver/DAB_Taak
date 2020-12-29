@@ -173,6 +173,15 @@ public class csaRepositoryJpaImpl implements csaRepository {
     }
 
     @Override
+    public List<Verkoopt> getVerkopen() {
+        var criteriaBuilder = entityManager.getCriteriaBuilder();
+        var query = criteriaBuilder.createQuery(Verkoopt.class);
+        var root = query.from(Verkoopt.class);
+        var all = query.select(root);
+        return entityManager.createQuery(all).getResultList();
+    }
+
+    @Override
     public void saveNewVerkoopt(Verkoopt verkoopt) {
         entityManager.getTransaction().begin();
         entityManager.persist(verkoopt);

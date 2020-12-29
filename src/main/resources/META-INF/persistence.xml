@@ -17,7 +17,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:csa.db"/>
             <property name="javax.persistence.jdbc.user" value=""/>
             <property name="javax.persistence.jdbc.password" value=""/>
-            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/><!--"drop-and-create" or "none"-->
+            <property name="javax.persistence.schema-generation.database.action" value="none"/><!--"drop-and-create" or "none"-->
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLiteDialect"/>
             <property name="hibernate.connection.autocommit" value="true"/>
