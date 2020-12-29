@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
+//TODO: Make sure that before u run te tests in "persistence.xml" value of "javax.persistence.schema-generation.database.action" is "drop-and-create"
 public class ProductTipsTest {
 
     @Test

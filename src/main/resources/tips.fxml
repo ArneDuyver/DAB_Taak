@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="tips_ap" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.kuleuven.csa.controller.ViewTipsController">
+   <children>
+      <Label layoutX="38.0" layoutY="239.0" text="Zelf toevoegen" />
+      <ScrollPane layoutX="32.0" layoutY="21.0" prefHeight="200.0" prefWidth="538.0">
+         <content>
+            <ListView fx:id="tips_lv" editable="true" prefHeight="197.0" prefWidth="520.0" />
+         </content>
+      </ScrollPane>
+      <Button fx:id="tips_btn_voegToe" layoutX="128.0" layoutY="235.0" mnemonicParsing="false" text="Voeg Toe" />
+      <Label layoutX="261.0" layoutY="239.0" text="Duid een tip aan druk op delete om te verwijderen" />
+      <TextArea fx:id="tips_ta" layoutX="32.0" layoutY="265.0" prefHeight="112.0" prefWidth="524.0" />
+   </children>
+</AnchorPane>

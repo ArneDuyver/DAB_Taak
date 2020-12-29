@@ -10,7 +10,7 @@ import org.lightcouch.NoDocumentException;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//TODO: Make sure that before u run te tests in "persistence.xml" value of "javax.persistence.schema-generation.database.action" is "drop-and-create"
 public class CouchDbClientTest {
     @Before
     public void setUp() {

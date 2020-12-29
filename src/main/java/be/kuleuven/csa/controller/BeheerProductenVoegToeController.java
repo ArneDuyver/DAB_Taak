@@ -1,6 +1,8 @@
 package be.kuleuven.csa.controller;
 
+import be.kuleuven.csa.domain.CouchDbClient;
 import be.kuleuven.csa.domain.Product;
+import be.kuleuven.csa.domain.ProductTips;
 import be.kuleuven.csa.domain.csaRepositoryJpaImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,5 +29,7 @@ public class BeheerProductenVoegToeController {
     public void addNewRow(){
         Product product= new Product(tfNaam.getText(),tfSoort.getText());
         repo.saveNewProduct(product);
+        ProductTips pt = new ProductTips(product.getNaam(), product.getSoort(), product.getProductId());
+        new CouchDbClient().saveProductTip(pt);
     }
 }

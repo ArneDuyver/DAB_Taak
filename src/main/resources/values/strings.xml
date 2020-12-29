@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources> <!--root-->
     <string name="program_title">CSA Administratie hoofdscherm</string><!--child, attribute name-->
-    <string name="example_string2">Second</string><!--child, attribute name-->
+    <string name="Click_here">Klik hier</string><!--child, attribute name-->
 </resources>

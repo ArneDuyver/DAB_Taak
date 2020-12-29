@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
-
+//TODO: Make sure that before u run te tests in "persistence.xml" value of "javax.persistence.schema-generation.database.action" is "drop-and-create"
 public class csaRepositoryJpaImplTest {
     public static final String DBNAME = "csaTest";
     private static final String INITIALISEMETHOD = "java";
