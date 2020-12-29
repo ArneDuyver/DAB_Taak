@@ -56,6 +56,7 @@ public interface csaRepository {
     void updateBevat(Bevat bevat);
     void deleteBevat(Bevat bevat);
 
+    List<HaaltAf> getHaaltAf(Klant klant);
     void saveNewHaaltAf(HaaltAf haaltAf);
     void updateHaaltAf(HaaltAf haaltAf);
     void deleteHaaltAf(HaaltAf haaltAf);

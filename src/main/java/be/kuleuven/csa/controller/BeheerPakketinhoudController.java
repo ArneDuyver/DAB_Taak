@@ -1,9 +1,7 @@
 package be.kuleuven.csa.controller;
 
 import be.kuleuven.csa.ProjectMain;
-import be.kuleuven.csa.domain.Boerderij;
-import be.kuleuven.csa.domain.PakketInhoud;
-import be.kuleuven.csa.domain.csaRepositoryJpaImpl;
+import be.kuleuven.csa.domain.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -21,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import javax.persistence.Persistence;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -107,6 +106,21 @@ public class BeheerPakketinhoudController {
 
     private void deleteCurrentRow() {
         PakketInhoud pakketInhoud = tblPakketinhouden.getSelectionModel().getSelectedItem();
+        List<BehoortTot> behoortTotList = pakketInhoud.getBehoortTotList();
+        List<Bevat> bevatList = pakketInhoud.getBevatList();
+        List<HaaltAf> haaltAfList = new ArrayList<>();
+        for(var eenBehoortTot : behoortTotList) {
+            haaltAfList.addAll(eenBehoortTot.getHaaltAfList());
+        }
+        for(var eenHaaltAf : haaltAfList) {
+            repo.deleteHaaltAf(eenHaaltAf);
+        }
+        for(var eenBehoortTot : behoortTotList) {
+            repo.deleteBehoortTot(eenBehoortTot);
+        }
+        for(var eenBevat : bevatList) {
+            repo.deleteBevat(eenBevat);
+        }
         repo.deletePakketinhoud(pakketInhoud);
         tblPakketinhouden.getItems().setAll(initTable());
     }

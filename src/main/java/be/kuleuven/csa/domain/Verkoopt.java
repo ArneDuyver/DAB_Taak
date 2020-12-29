@@ -93,6 +93,18 @@ public class Verkoopt {
         return verkooptId;
     }
 
+    public void setVerkooptId(int verkooptId) {
+        this.verkooptId = verkooptId;
+    }
+
+    public void setKooptList(List<Koopt> kooptList) {
+        this.kooptList = kooptList;
+    }
+
+    public void setBehoortTotList(List<BehoortTot> behoortTotList) {
+        this.behoortTotList = behoortTotList;
+    }
+
     @Override
     public String toString() {
         return "verkooptId=" + verkooptId +

@@ -33,6 +33,9 @@ public class HaaltAf {
         this.afgehaald = false;
     }
 
+    public HaaltAf() {
+    }
+
     public void setAfgehaald(boolean afgehaald) {
         this.afgehaald = afgehaald;
     }
@@ -55,5 +58,14 @@ public class HaaltAf {
 
     public Klant getKlant() {
         return klant;
+    }
+
+    public int getHaaltAfId() {
+        return haaltAfId;
+    }
+
+
+    public void setHaaltAfId(int haaltAfId) {
+        this.haaltAfId = haaltAfId;
     }
 }

@@ -105,7 +105,7 @@ public class csaRepositoryJpaImplTest {
         Pakketbeschrijving p = new Pakketbeschrijving("testNaam",0,0);
         Verkoopt v = new Verkoopt(0,"testDatum",b,p);
         Klant k = new Klant("testNaam","testAdres","testEmail","testTelefoonNr");
-        Koopt koopt = new Koopt(v,k);
+        Koopt koopt = new Koopt(v,k,false);
         model.getRepo().saveObjectToDb(b);
         model.getRepo().saveObjectToDb(p);
         model.getRepo().saveObjectToDb(v);

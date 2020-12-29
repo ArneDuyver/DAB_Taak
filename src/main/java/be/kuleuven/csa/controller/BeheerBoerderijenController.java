@@ -1,8 +1,7 @@
 package be.kuleuven.csa.controller;
 
 import be.kuleuven.csa.ProjectMain;
-import be.kuleuven.csa.domain.Boerderij;
-import be.kuleuven.csa.domain.csaRepositoryJpaImpl;
+import be.kuleuven.csa.domain.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -20,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import javax.persistence.Persistence;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -112,6 +112,32 @@ public class BeheerBoerderijenController {
 
     private void deleteCurrentRow() {
         Boerderij boerderij = tblBoerderijen.getSelectionModel().getSelectedItem();
+        List<Verkoopt>verkooptList = boerderij.getVerkooptList();
+        List<Koopt>kooptList = new ArrayList<Koopt>();
+        for(var eenVerkoop : verkooptList) {
+            kooptList.addAll(eenVerkoop.getKooptList());
+        }
+        List<BehoortTot>behoortTotList = new ArrayList<BehoortTot>();
+        for(var eenVerkoop : verkooptList) {
+            behoortTotList.addAll(eenVerkoop.getBehoortTotList());
+        }
+        List<HaaltAf> haaltAfList = new ArrayList<HaaltAf>();
+        for(var eenBehoortTot : behoortTotList) {
+            haaltAfList.addAll(eenBehoortTot.getHaaltAfList());
+        }
+        for(var eenHaaltAf : haaltAfList) {
+            repo.deleteHaaltAf(eenHaaltAf);
+        }
+        for(var eenBehoortTot : behoortTotList) {
+            repo.deleteBehoortTot(eenBehoortTot);
+        }
+        for(var eenKoop : kooptList) {
+            repo.deleteKoopt(eenKoop);
+        }
+
+        for(var eenVerkoop : verkooptList) {
+            repo.deleteVerkoopt(eenVerkoop);
+        }
         repo.deleteBoerderij(boerderij);
         tblBoerderijen.getItems().setAll(initTable());
     }

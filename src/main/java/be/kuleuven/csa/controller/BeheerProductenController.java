@@ -1,10 +1,7 @@
 package be.kuleuven.csa.controller;
 
 import be.kuleuven.csa.ProjectMain;
-import be.kuleuven.csa.domain.CouchDbClient;
-import be.kuleuven.csa.domain.Product;
-import be.kuleuven.csa.domain.ProductTips;
-import be.kuleuven.csa.domain.csaRepositoryJpaImpl;
+import be.kuleuven.csa.domain.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -106,6 +103,10 @@ public class BeheerProductenController {
 
     private void deleteCurrentRow() {
         Product product = tblProducten.getSelectionModel().getSelectedItem();
+        List<Bevat>bevatList = product.getBevatList();
+        for(var eenBevat : bevatList) {
+            repo.deleteBevat(eenBevat);
+        }
         repo.deleteProduct(product);
         ProductTips pt = new CouchDbClient().getProductTips(product.getProductId());
         new CouchDbClient().removeProductTip(pt);

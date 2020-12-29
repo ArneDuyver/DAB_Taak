@@ -1,7 +1,9 @@
 package be.kuleuven.csa.controller;
 
 import be.kuleuven.csa.ProjectMain;
+import be.kuleuven.csa.domain.HaaltAf;
 import be.kuleuven.csa.domain.Klant;
+import be.kuleuven.csa.domain.Koopt;
 import be.kuleuven.csa.domain.csaRepositoryJpaImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,6 +34,8 @@ public class BeheerKlantenController {
     @FXML
     private Button btnModify;
     @FXML
+    private Button btnAfhalingen;
+    @FXML
     private Button btnClose;
     @FXML
     private TableView<Klant> tblKlanten;
@@ -61,6 +65,7 @@ public class BeheerKlantenController {
         tblKlanten.getItems().setAll(initTable());
 
         btnAdd.setOnAction(e -> addNewRow());
+        btnAfhalingen.setOnAction(e -> afhalingen());
         btnModify.setOnAction(e -> {
             verifyOneRowSelected();
             modifyCurrentRow();
@@ -109,6 +114,14 @@ public class BeheerKlantenController {
 
     private void deleteCurrentRow() {
         Klant klant = tblKlanten.getSelectionModel().getSelectedItem();
+        List<Koopt>kooptList = klant.getKooptList();
+        List<HaaltAf>haaltAfList = klant.getHaaltAfList();
+        for(var eenHaaltAf : haaltAfList) {
+            repo.deleteHaaltAf(eenHaaltAf);
+        }
+        for(var eenKoopt : kooptList) {
+            repo.deleteKoopt(eenKoopt);
+        }
         repo.deleteKlant(klant);
         tblKlanten.getItems().setAll(initTable());
     }
@@ -125,6 +138,30 @@ public class BeheerKlantenController {
             stage.initOwner(ProjectMain.getRootStage());
             stage.initModality(Modality.WINDOW_MODAL);
             BeheerKlantenModifyController bm = root.getController();
+            bm.initData(klant);
+            stage.show();
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent we) {
+                    tblKlanten.getItems().setAll(initTable());
+                }
+            });
+
+        } catch (Exception e) {
+            throw new RuntimeException("Kan beheerscherm niet vinden", e);
+        }
+    }
+    private void afhalingen() {
+        try {
+            Klant klant = tblKlanten.getSelectionModel().getSelectedItem();
+
+            var root = new FXMLLoader(getClass().getClassLoader().getResource("beheerHaaltAf.fxml"));
+            var stage = new Stage();
+            var scene = new Scene(root.load());
+            stage.setScene(scene);
+            stage.setTitle("Beheer van Afhalingen");
+            stage.initOwner(ProjectMain.getRootStage());
+            stage.initModality(Modality.WINDOW_MODAL);
+            BeheerHaaltAfController bm = root.getController();
             bm.initData(klant);
             stage.show();
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {

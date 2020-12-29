@@ -1,10 +1,7 @@
 package be.kuleuven.csa.controller;
 
 import be.kuleuven.csa.ProjectMain;
-import be.kuleuven.csa.domain.Bevat;
-import be.kuleuven.csa.domain.PakketInhoud;
-import be.kuleuven.csa.domain.Verkoopt;
-import be.kuleuven.csa.domain.csaRepositoryJpaImpl;
+import be.kuleuven.csa.domain.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -21,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import javax.persistence.Persistence;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -111,6 +109,21 @@ public class BeheerVerkooptController {
 
     private void deleteCurrentRow() {
         Verkoopt verkoopt = tblVerkoopt.getSelectionModel().getSelectedItem();
+        List<Koopt> kooptList = verkoopt.getKooptList();
+        List<BehoortTot> behoortTotList = verkoopt.getBehoortTotList();
+        List<HaaltAf> haaltAfList = new ArrayList<>();
+        for(var eenBehoortTot : behoortTotList) {
+            haaltAfList.addAll(eenBehoortTot.getHaaltAfList());
+        }
+        for(var eenHaaltAf : haaltAfList) {
+            repo.deleteHaaltAf(eenHaaltAf);
+        }
+        for(var eenBehoortTot : behoortTotList) {
+            repo.deleteBehoortTot(eenBehoortTot);
+        }
+        for(var eenKoop : kooptList) {
+            repo.deleteKoopt(eenKoop);
+        }
         repo.deleteVerkoopt(verkoopt);
         tblVerkoopt.getItems().setAll(initTable());
     }
