@@ -14,8 +14,6 @@
     <children>
         <TextField fx:id="tfPrijs" layoutX="8" layoutY="25" promptText="prijs"></TextField>
         <TextField fx:id="tfStartdatum" layoutX="158" layoutY="25" promptText="startdatum"></TextField>
-        <ComboBox fx:id="cbBoerderijen" layoutX="308" layoutY="25" promptText="boerderijen"></ComboBox>
-        <ComboBox fx:id="cbPakketbeschrijvingen" layoutX="308" layoutY="60" promptText="pakketbeschrijvingen"></ComboBox>
         <Text layoutX="10" layoutY="10" strokeType="OUTSIDE" strokeWidth="0.0" text="Modify Verkoopt" wrappingWidth="567.21875">
             <font>
                 <Font name="System Bold Italic" size="13.0" />

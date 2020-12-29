@@ -9,11 +9,12 @@
 
 
 <?import javafx.scene.control.TextField?>
-<AnchorPane prefHeight="100" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.kuleuven.csa.controller.BeheerProductenModifyController">
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.CheckBox?>
+<AnchorPane prefHeight="100" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.kuleuven.csa.controller.BeheerBehoortTotModifyController">
     <children>
-        <TextField fx:id="tfNaam" layoutX="8" layoutY="25" ></TextField>
-        <TextField fx:id="tfSoort" layoutX="158" layoutY="25" ></TextField>
-        <Text layoutX="10" layoutY="10" strokeType="OUTSIDE" strokeWidth="0.0" text="Modify Producten" wrappingWidth="567.21875">
+        <TextField fx:id="tfWeeknr" layoutX="8" layoutY="25" promptText="weeknr"></TextField>
+        <Text layoutX="10" layoutY="10" strokeType="OUTSIDE" strokeWidth="0.0" text="Modify Koop " wrappingWidth="567.21875">
             <font>
                 <Font name="System Bold Italic" size="13.0" />
             </font>

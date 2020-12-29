@@ -133,11 +133,11 @@ public class Model {
         var behoortTot_16 = new BehoortTot(2,verkoopt_8,pakketInhoud_2);
             //</editor-fold
             //<editor-fold desc="Koopt objecten">
-        var koopt_1 = new Koopt(verkoopt_1,klant_1);
-        var koopt_2 = new Koopt(verkoopt_3,klant_2);
-        var koopt_3 = new Koopt(verkoopt_4,klant_3);
-        var koopt_4 = new Koopt(verkoopt_1,klant_4);
-        var koopt_5 = new Koopt(verkoopt_7,klant_4);
+        var koopt_1 = new Koopt(verkoopt_1,klant_1,false);
+        var koopt_2 = new Koopt(verkoopt_3,klant_2,false);
+        var koopt_3 = new Koopt(verkoopt_4,klant_3,false);
+        var koopt_4 = new Koopt(verkoopt_1,klant_4,false);
+        var koopt_5 = new Koopt(verkoopt_7,klant_4,false);
             //</editor-fold>
             //<editor-fold desc="HaaltAf objecten">
         var haaltAf_1 = new HaaltAf(behoortTot_1,klant_1);

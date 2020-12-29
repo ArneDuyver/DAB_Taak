@@ -1,8 +1,7 @@
 package be.kuleuven.csa.controller;
 
 import be.kuleuven.csa.ProjectMain;
-import be.kuleuven.csa.domain.Boerderij;
-import be.kuleuven.csa.domain.csaRepositoryJpaImpl;
+import be.kuleuven.csa.domain.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -14,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -23,8 +21,7 @@ import javax.persistence.Persistence;
 import java.util.Iterator;
 import java.util.List;
 
-public class BeheerBoerderijenController {
-
+public class BeheerBehoortTotController {
     @FXML
     private Button btnDelete;
     @FXML
@@ -34,34 +31,31 @@ public class BeheerBoerderijenController {
     @FXML
     private Button btnClose;
     @FXML
-    private TableView<Boerderij> tblBoerderijen;
+    private TableView<BehoortTot> tblBehoortTot;
     @FXML
-    private TableColumn<Boerderij, Integer>boerderijId;
+    private TableColumn<BehoortTot,Integer> behoortTotId;
     @FXML
-    private TableColumn<Boerderij,String>Naam;
+    private TableColumn<BehoortTot,Integer>Weeknr;
     @FXML
-    private TableColumn<Boerderij,String>Adres;
+    private TableColumn<BehoortTot, Verkoopt>VerkooptString;
     @FXML
-    private TableColumn<Boerderij,String>Email;
-    @FXML
-    private TableColumn<Boerderij,String>Rekeningnummer;
-    @FXML
-    private TableColumn<Boerderij,Integer>Opbrengst;
+    private TableColumn<BehoortTot,PakketInhoud>PakketInhoudString;
 
-    public ObservableList<Boerderij> data;
+    public ObservableList<BehoortTot> data;
     private csaRepositoryJpaImpl repo;
+
 
     public void initialize() {
         var sessionFactory = Persistence.createEntityManagerFactory("be.kuleuven.csa.domain");
         var entityManager = sessionFactory.createEntityManager();
         this.repo = new csaRepositoryJpaImpl(entityManager);
-        boerderijId.setCellValueFactory(new PropertyValueFactory<Boerderij, Integer>("boerderijId"));
-        Naam.setCellValueFactory(new PropertyValueFactory<Boerderij, String>("Naam"));
-        Adres.setCellValueFactory(new PropertyValueFactory<Boerderij, String>("Adres"));
-        Email.setCellValueFactory(new PropertyValueFactory<Boerderij, String>("Email"));
-        Rekeningnummer.setCellValueFactory(new PropertyValueFactory<Boerderij, String>("Rekeningnummer"));
-        Opbrengst.setCellValueFactory(new PropertyValueFactory<Boerderij, Integer>("opbrengst"));
-        tblBoerderijen.getItems().setAll(initTable());
+
+        behoortTotId.setCellValueFactory(new PropertyValueFactory<BehoortTot, Integer>("behoortTotId"));
+        Weeknr.setCellValueFactory(new PropertyValueFactory<BehoortTot, Integer>("weeknr"));
+        VerkooptString.setCellValueFactory(new PropertyValueFactory<BehoortTot, Verkoopt>("verkoop"));
+        PakketInhoudString.setCellValueFactory(new PropertyValueFactory<BehoortTot, PakketInhoud>("pakketInhoud"));
+
+        tblBehoortTot.getItems().setAll(initTable());
 
         btnAdd.setOnAction(e -> addNewRow());
         btnModify.setOnAction(e -> {
@@ -72,36 +66,36 @@ public class BeheerBoerderijenController {
             verifyOneRowSelected();
             deleteCurrentRow();
         });
-        
+
         btnClose.setOnAction(e -> {
             var stage = (Stage) btnClose.getScene().getWindow();
             stage.close();
         });
     }
 
-    private List<Boerderij> initTable() {
+    private List<BehoortTot> initTable() {
         data = FXCollections.observableArrayList();
-        Iterator ite = repo.getBoerderij().listIterator();
+        Iterator ite = repo.getBehoortTot().listIterator();
         while (ite.hasNext()){
-            Boerderij boerderij = (Boerderij) ite.next();
-            data.add(boerderij);
+            BehoortTot behoortTot = (BehoortTot) ite.next();
+            data.add(behoortTot);
         }
         return data;
     }
 
     private void addNewRow() {
         try {
+            var root = new FXMLLoader(getClass().getClassLoader().getResource("beheerBehoortTotVoegToe.fxml"));
             var stage = new Stage();
-            var root = (AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("BeheerBoerderijenVoegToe.fxml"));
-            var scene = new Scene(root);
+            var scene = new Scene(root.load());
             stage.setScene(scene);
-            stage.setTitle("Beheer van BoerderijVoegToe");
+            stage.setTitle("Beheer van bevatVoegToe");
             stage.initOwner(ProjectMain.getRootStage());
             stage.initModality(Modality.WINDOW_MODAL);
             stage.show();
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 public void handle(WindowEvent we) {
-                    tblBoerderijen.getItems().setAll(initTable());
+                    tblBehoortTot.getItems().setAll(initTable());
                 }
             });
 
@@ -111,28 +105,28 @@ public class BeheerBoerderijenController {
     }
 
     private void deleteCurrentRow() {
-        Boerderij boerderij = tblBoerderijen.getSelectionModel().getSelectedItem();
-        repo.deleteBoerderij(boerderij);
-        tblBoerderijen.getItems().setAll(initTable());
+        BehoortTot behoortTot = tblBehoortTot.getSelectionModel().getSelectedItem();
+        repo.deleteBehoortTot(behoortTot);
+        tblBehoortTot.getItems().setAll(initTable());
     }
 
     private void modifyCurrentRow() {
         try {
-            Boerderij boerderij = tblBoerderijen.getSelectionModel().getSelectedItem();
+            BehoortTot behoortTot = tblBehoortTot.getSelectionModel().getSelectedItem();
 
-            var root = new FXMLLoader(getClass().getClassLoader().getResource("beheerBoerderijenModify.fxml"));
+            var root = new FXMLLoader(getClass().getClassLoader().getResource("beheerBehoortTotModify.fxml"));
             var stage = new Stage();
             var scene = new Scene(root.load());
             stage.setScene(scene);
-            stage.setTitle("Beheer van BoerderijModify");
+            stage.setTitle("Beheer van bevat");
             stage.initOwner(ProjectMain.getRootStage());
             stage.initModality(Modality.WINDOW_MODAL);
-            BeheerBoerderijenModifyController bm = root.getController();
-            bm.initData(boerderij);
+            BeheerBehoortTotModifyController bm = root.getController();
+            bm.initData(behoortTot);
             stage.show();
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 public void handle(WindowEvent we) {
-                    tblBoerderijen.getItems().setAll(initTable());
+                    tblBehoortTot.getItems().setAll(initTable());
                 }
             });
 
@@ -150,7 +144,7 @@ public class BeheerBoerderijenController {
     }
 
     private void verifyOneRowSelected() {
-        if(tblBoerderijen.getSelectionModel().getSelectedCells().size() == 0) {
+        if(tblBehoortTot.getSelectionModel().getSelectedCells().size() == 0) {
             showAlert("Selecteer!", "Eerst een boer selecteren.");
         }
     }

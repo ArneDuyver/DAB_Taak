@@ -38,7 +38,46 @@ public class BehoortTot {
         this.haaltAfList= new ArrayList<>();
     }
 
+    public BehoortTot() {
+    }
+
     public List<HaaltAf> getHaaltAfList() {
         return haaltAfList;
+    }
+
+    public int getBehoortTotId() {
+        return behoortTotId;
+    }
+
+    public void setBehoortTotId(int behoortTotId) {
+        this.behoortTotId = behoortTotId;
+    }
+
+    public int getWeekNummer() {
+        return weekNummer;
+    }
+
+    public void setWeekNummer(int weekNummer) {
+        this.weekNummer = weekNummer;
+    }
+
+    public Verkoopt getVerkoopt() {
+        return verkoopt;
+    }
+
+    public void setVerkoopt(Verkoopt verkoopt) {
+        this.verkoopt = verkoopt;
+    }
+
+    public PakketInhoud getPakketInhoud() {
+        return pakketInhoud;
+    }
+
+    public void setPakketInhoud(PakketInhoud pakketInhoud) {
+        this.pakketInhoud = pakketInhoud;
+    }
+
+    public void setHaaltAfList(List<HaaltAf> haaltAfList) {
+        this.haaltAfList = haaltAfList;
     }
 }

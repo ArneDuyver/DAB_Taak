@@ -17,7 +17,7 @@ public class dbTest {
             var Kamiel = new Klant("Allard Kamiel","Boshoeve 11", "kamiel.allard@hotmail.com", "0497688279");
             var medium = new Pakketbeschrijving("medium",2,1);
             var verkoopt = new Verkoopt(200,"2020-12-24",nieuwhuis,medium);
-            var contract = new Koopt(verkoopt,Kamiel);
+            var contract = new Koopt(verkoopt,Kamiel,false);
             var pakketinhoud = new PakketInhoud("tutifruti");
             var behoortTot = new BehoortTot(1,verkoopt,pakketinhoud);
             var bevat1  =new Bevat("aantal",3,pakketinhoud,appel);

@@ -92,4 +92,11 @@ public class Verkoopt {
     public int getVerkooptId() {
         return verkooptId;
     }
+
+    @Override
+    public String toString() {
+        return "verkooptId=" + verkooptId +
+                ", boerderij=(" + boerderij +
+                "), pakketbeschrijving=(" + pakketbeschrijving +")";
+    }
 }

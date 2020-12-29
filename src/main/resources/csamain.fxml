@@ -16,10 +16,11 @@
       <Button fx:id="btnBoerderijen" layoutX="46.0" layoutY="69.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Boerderijen" />
       <Button fx:id="btnProducten" layoutX="206.0" layoutY="69.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Producten" />
       <Button fx:id="btnKlanten" layoutX="46.0" layoutY="111.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Klanten" />
-      <Button fx:id="btnInschrijvingen" layoutX="206.0" layoutY="111.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Inschrijvingen" />
+      <Button fx:id="btnInschrijvingen" layoutX="46.0" layoutY="153.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Inschrijvingen" />
       <Button fx:id="btnTips" layoutX="206.0" layoutY="153" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Kooktips" />
-      <Button fx:id="btnPakketbeschrijving" layoutX="46.0" layoutY="153.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Pakketbeschrijvingen" />
-      <Button fx:id="btnWeekPaketten" layoutX="46.0" layoutY="195.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer weekpakketen" />
+      <Button fx:id="btnPakketbeschrijving" layoutX="206.0" layoutY="111.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Pakketbeschrijvingen" />
+      <Button fx:id="btnWeekPaketten" layoutX="46.0" layoutY="195.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Pakketinhouden" />
       <Button fx:id="btnContracten" layoutX="206.0" layoutY="195.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Contracten" />
+      <Button fx:id="btnPakketMaker" layoutX="206.0" layoutY="237.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Beheer Weekpakketten" />
    </children>
 </AnchorPane>

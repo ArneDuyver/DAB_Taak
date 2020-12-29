@@ -89,12 +89,8 @@ public class Klant {
     }
     @Override
     public String toString() {
-        return "Klant{" +
-                "klantId=" + klantId +
-                ",naam='" + naam + '\'' +
-                ", adres='" + adres + '\'' +
-                ", email=" + email +
-                ", telefoonnummer=" + telefoonnummer +
-                '}';
+        return "klantId=" + klantId +
+                ",naam='" + naam + '\''
+                ;
     }
 }

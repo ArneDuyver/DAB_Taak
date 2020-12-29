@@ -73,11 +73,9 @@ public class Pakketbeschrijving {
 
     @Override
     public String toString() {
-        return "Pakketbeschrijving{" +
+        return
                 "pakketBeschrijvingId=" + pakketbeschrijvingId +
-                ",naam='" + naam + '\'' +
-                ", volwassenen=" + volwassenen +
-                ", kinderen=" + kinderen +
-                '}';
+                ",naam='" + naam + '\'';
+
     }
 }

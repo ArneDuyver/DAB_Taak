@@ -98,13 +98,12 @@ public class Boerderij {
 
     @Override
     public String toString() {
-        return "Boerderij{" +
+        return
                 "BoerderijId=" + boerderijId +
-                ",naam='" + naam + '\'' +
-                ", adres='" + adres + '\'' +
-                ", email=" + email +
-                ", rekeningnummer=" + rekeningnummer +
-                ", opbrengst=" + opbrengst +
-                '}';
+                ",naam='" + naam + '\'' ;
+    }
+
+    public void addOpbrengst(int prijs) {
+        this.opbrengst = opbrengst + prijs;
     }
 }

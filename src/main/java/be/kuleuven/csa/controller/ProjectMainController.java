@@ -30,16 +30,20 @@ public class ProjectMainController {
     private Button btnWeekPaketten;
     @FXML
     private Button btnContracten;
+    @FXML
+    private Button btnPakketMaker;
 
     public void initialize() {
         btnBoerderijen.setOnAction(e -> showBeheerScherm("boerderijen"));
         btnTips.setOnAction(e -> showBeheerScherm("tips"));
         btnKlanten.setOnAction(e -> showBeheerScherm("klanten"));
-        btnInschrijvingen.setOnAction(e -> showBeheerScherm("inschrijvingen"));
+        btnInschrijvingen.setOnAction(e -> showBeheerScherm("kopen"));
         btnProducten.setOnAction(e -> showBeheerScherm("producten"));
         btnPakketbeschrijving.setOnAction(e -> showBeheerScherm("pakketbeschrijvingen"));
         btnWeekPaketten.setOnAction(event -> showBeheerScherm("pakketinhouden"));
         btnContracten.setOnAction(event -> showBeheerScherm("verkopen"));
+        btnPakketMaker.setOnAction(event -> showBeheerScherm("behoorttot"));
+
     }
 
     private void showBeheerScherm(String id) {

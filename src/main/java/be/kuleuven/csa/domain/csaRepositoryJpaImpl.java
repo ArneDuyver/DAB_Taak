@@ -203,6 +203,15 @@ public class csaRepositoryJpaImpl implements csaRepository {
     }
 
     @Override
+    public List<Koopt> getKopen() {
+        var criteriaBuilder = entityManager.getCriteriaBuilder();
+        var query = criteriaBuilder.createQuery(Koopt.class);
+        var root = query.from(Koopt.class);
+        var all = query.select(root);
+        return entityManager.createQuery(all).getResultList();
+    }
+
+    @Override
     public void saveNewKoopt(Koopt koopt) {
         entityManager.getTransaction().begin();
         entityManager.persist(koopt);
@@ -251,6 +260,15 @@ public class csaRepositoryJpaImpl implements csaRepository {
         entityManager.getTransaction().begin();
         entityManager.remove(pakketInhoud);
         entityManager.getTransaction().commit();
+    }
+
+    @Override
+    public List<BehoortTot> getBehoortTot() {
+        var criteriaBuilder = entityManager.getCriteriaBuilder();
+        var query = criteriaBuilder.createQuery(BehoortTot.class);
+        var root = query.from(BehoortTot.class);
+        var all = query.select(root);
+        return entityManager.createQuery(all).getResultList();
     }
 
     @Override

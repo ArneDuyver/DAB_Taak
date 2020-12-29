@@ -36,6 +36,7 @@ public interface csaRepository {
     void updateVerkoopt(Verkoopt verkoopt);
     void deleteVerkoopt(Verkoopt verkoopt);
 
+    List<Koopt> getKopen();
     void saveNewKoopt(Koopt koopt);
     void updateKoopt(Koopt koopt);
     void deleteKoopt(Koopt koopt);
@@ -45,6 +46,7 @@ public interface csaRepository {
     void updatePakketinhoud(PakketInhoud pakketInhoud);
     void deletePakketinhoud(PakketInhoud pakketInhoud);
 
+    List<BehoortTot> getBehoortTot();
     void saveNewBehoortTot(BehoortTot behoortTot);
     void updateBehoortTot(BehoortTot behoortTot);
     void deleteBehoortTot(BehoortTot behoortTot);

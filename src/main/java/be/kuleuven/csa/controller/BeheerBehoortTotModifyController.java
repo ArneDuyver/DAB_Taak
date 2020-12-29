@@ -8,22 +8,18 @@ import javafx.scene.control.TextField;
 
 import javax.persistence.Persistence;
 
-public class BeheerVerkooptModifyController {
+public class BeheerBehoortTotModifyController {
     @FXML
-    private TextField tfStartdatum;
-    @FXML
-    private TextField tfPrijs;
-
+    private TextField tfWeeknr;
     @FXML
     private Button btnModify;
     private csaRepositoryJpaImpl repo;
 
-    private Verkoopt verkoopt;
+    private BehoortTot behoortTot;
 
-    public void initData(Verkoopt verkoopt) {
-        this.verkoopt = verkoopt;
-        tfStartdatum.setText(verkoopt.getStartdatum());
-        tfPrijs.setText(String.valueOf(verkoopt.getPrijs()));
+    public void initData(BehoortTot behoortTot) {
+        this.behoortTot = behoortTot;
+        tfWeeknr.setText(String.valueOf(behoortTot.getWeekNummer()));
     }
 
     public void initialize() {
@@ -34,8 +30,8 @@ public class BeheerVerkooptModifyController {
         btnModify.setOnAction(e -> ModifyRow());
     }
     public void ModifyRow(){
-        verkoopt.setStartdatum(tfStartdatum.getText());
-        verkoopt.setPrijs(Integer.valueOf(tfPrijs.getText()));
-        repo.updateVerkoopt(verkoopt);
+        behoortTot.setWeekNummer(Integer.valueOf(tfWeeknr.getText()));
+        repo.updateBehoortTot(behoortTot);
     }
 }
+
