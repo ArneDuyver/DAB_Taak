@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import javax.persistence.Persistence;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -111,12 +112,12 @@ public class BeheerKooptController {
 
     private void deleteCurrentRow() {
         Koopt koopt = tblKoopt.getSelectionModel().getSelectedItem();
+        List<HaaltAf> haaltAfList = koopt.getKlant().getHaaltAfList();
+        for(var eenHaaltAf : haaltAfList) {
+            repo.deleteHaaltAf(eenHaaltAf);
+        }
         repo.deleteKoopt(koopt);
         tblKoopt.getItems().setAll(initTable());
-        List<BehoortTot> behoortTotList = koopt.getVerkoopt().getBehoortTotList();
-        for(var eenBehoortTot : behoortTotList) {
-
-        }
     }
 
     private void betaaldCurrentRow() {

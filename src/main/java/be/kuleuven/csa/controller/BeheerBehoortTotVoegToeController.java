@@ -1,15 +1,13 @@
 package be.kuleuven.csa.controller;
 
-import be.kuleuven.csa.domain.BehoortTot;
-import be.kuleuven.csa.domain.PakketInhoud;
-import be.kuleuven.csa.domain.Verkoopt;
-import be.kuleuven.csa.domain.csaRepositoryJpaImpl;
+import be.kuleuven.csa.domain.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class BeheerBehoortTotVoegToeController {
     @FXML
@@ -36,5 +34,9 @@ public class BeheerBehoortTotVoegToeController {
     public void addNewRow(){
         BehoortTot behoortTot = new BehoortTot(Integer.valueOf(tfWeeknr.getText()),cbVerkopen.getValue(),cbPakketInhouden.getValue());
         repo.saveNewBehoortTot(behoortTot);
+        List<Koopt> kooptList =behoortTot.getVerkoopt().getKooptList();
+        for(var eenKoopt : kooptList) {
+            repo.saveNewHaaltAf(new HaaltAf(behoortTot,eenKoopt.getKlant()));
+        }
     }
 }

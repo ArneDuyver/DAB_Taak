@@ -51,8 +51,8 @@ public class BeheerBehoortTotController {
         this.repo = new csaRepositoryJpaImpl(entityManager);
 
         behoortTotId.setCellValueFactory(new PropertyValueFactory<BehoortTot, Integer>("behoortTotId"));
-        Weeknr.setCellValueFactory(new PropertyValueFactory<BehoortTot, Integer>("weeknr"));
-        VerkooptString.setCellValueFactory(new PropertyValueFactory<BehoortTot, Verkoopt>("verkoop"));
+        Weeknr.setCellValueFactory(new PropertyValueFactory<BehoortTot, Integer>("weekNummer"));
+        VerkooptString.setCellValueFactory(new PropertyValueFactory<BehoortTot, Verkoopt>("verkoopt"));
         PakketInhoudString.setCellValueFactory(new PropertyValueFactory<BehoortTot, PakketInhoud>("pakketInhoud"));
 
         tblBehoortTot.getItems().setAll(initTable());
@@ -106,6 +106,10 @@ public class BeheerBehoortTotController {
 
     private void deleteCurrentRow() {
         BehoortTot behoortTot = tblBehoortTot.getSelectionModel().getSelectedItem();
+        List<HaaltAf>haaltAfList = behoortTot.getHaaltAfList();
+        for(var eenHaaltAf : haaltAfList) {
+            repo.deleteHaaltAf(eenHaaltAf);
+        }
         repo.deleteBehoortTot(behoortTot);
         tblBehoortTot.getItems().setAll(initTable());
     }

@@ -323,6 +323,15 @@ public class csaRepositoryJpaImpl implements csaRepository {
     }
 
     @Override
+    public List<HaaltAf> getHaaltAf(Klant klant) {
+        var criteriabuilder = entityManager.getCriteriaBuilder();
+        var query = criteriabuilder.createQuery(HaaltAf.class);
+        var root = query.from(HaaltAf.class);
+        query.where(criteriabuilder.equal(root.get("klant"), klant));
+        return entityManager.createQuery(query).getResultList() ;
+    }
+
+    @Override
     public void saveNewHaaltAf(HaaltAf haaltAf) {
         entityManager.getTransaction().begin();
         entityManager.persist(haaltAf);
