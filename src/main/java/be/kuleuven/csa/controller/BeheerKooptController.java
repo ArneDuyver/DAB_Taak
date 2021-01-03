@@ -145,7 +145,7 @@ public class BeheerKooptController {
 
     private void verifyOneRowSelected() {
         if(tblKoopt.getSelectionModel().getSelectedCells().size() == 0) {
-            showAlert("Selecteer!", "Eerst een boer selecteren.");
+            showAlert("Selecteer!", "Eerst een koopt selecteren.");
         }
     }
 }

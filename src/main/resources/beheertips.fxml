@@ -17,6 +17,6 @@
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Text>
-      <Label layoutX="14.0" layoutY="346.0" text="Dubbelklik of een &quot;Klik hier&quot; cell voor meer info." />
+      <Label layoutX="14.0" layoutY="346.0" text="Dubbelklik op een &quot;Klik hier&quot; cell voor meer info." />
    </children>
 </AnchorPane>

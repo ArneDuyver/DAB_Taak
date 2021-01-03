@@ -185,7 +185,7 @@ public class BeheerPakketinhoudController {
 
     private void verifyOneRowSelected() {
         if(tblPakketinhouden.getSelectionModel().getSelectedCells().size() == 0) {
-            showAlert("Selecteer!", "Eerst een boer selecteren.");
+            showAlert("Selecteer!", "Eerst een pakketinhoud selecteren.");
         }
     }
 }

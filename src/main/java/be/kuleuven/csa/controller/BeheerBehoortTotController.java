@@ -122,7 +122,7 @@ public class BeheerBehoortTotController {
             var stage = new Stage();
             var scene = new Scene(root.load());
             stage.setScene(scene);
-            stage.setTitle("Beheer van bevat");
+            stage.setTitle("Beheer van behoortTot");
             stage.initOwner(ProjectMain.getRootStage());
             stage.initModality(Modality.WINDOW_MODAL);
             BeheerBehoortTotModifyController bm = root.getController();
@@ -149,7 +149,7 @@ public class BeheerBehoortTotController {
 
     private void verifyOneRowSelected() {
         if(tblBehoortTot.getSelectionModel().getSelectedCells().size() == 0) {
-            showAlert("Selecteer!", "Eerst een boer selecteren.");
+            showAlert("Selecteer!", "Eerst een behoortTot selecteren.");
         }
     }
 }

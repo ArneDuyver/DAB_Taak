@@ -156,7 +156,7 @@ public class BeheerBevatController {
 
     private void verifyOneRowSelected() {
         if(tblBevat.getSelectionModel().getSelectedCells().size() == 0) {
-            showAlert("Selecteer!", "Eerst een boer selecteren.");
+            showAlert("Selecteer!", "Eerst een bevat selecteren.");
         }
     }
 }
