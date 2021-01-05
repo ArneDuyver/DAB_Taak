@@ -28,7 +28,7 @@ public class dbTest {
             repo.saveNewKlant(Kamiel);
             repo.saveNewPakketbeschrijving(medium);
             repo.saveNewVerkoopt(verkoopt);
-            repo.saveNewKoopt(contract);
+            repo.saveNewKoopt(contract, false);
             repo.saveNewPakketinhoud(pakketinhoud);
             repo.saveNewBehoortTot(behoortTot);
             repo.saveNewBevat(bevat1);

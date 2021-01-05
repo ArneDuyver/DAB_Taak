@@ -68,4 +68,13 @@ public class HaaltAf {
     public void setHaaltAfId(int haaltAfId) {
         this.haaltAfId = haaltAfId;
     }
+
+    @Override
+    public String toString() {
+        return      "haaltAfId=" + haaltAfId +
+                ", afgehaald=" + afgehaald +
+                ", behoortTot=(" + behoortTot +
+                "), klant=(" + klant +")"
+                ;
+    }
 }

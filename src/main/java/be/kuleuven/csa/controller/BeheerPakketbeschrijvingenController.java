@@ -108,7 +108,7 @@ public class BeheerPakketbeschrijvingenController {
 
     private void deleteCurrentRow() {
         Pakketbeschrijving pakketbeschrijving = tblPakketbeschijvingen.getSelectionModel().getSelectedItem();
-        List<Verkoopt>verkooptList = pakketbeschrijving.getVerkooptList();
+        List<Verkoopt>verkooptList = repo.getVerkopenPakketbeschrijving(pakketbeschrijving);
         List<Koopt>kooptList = new ArrayList<Koopt>();
         for(var eenVerkoop : verkooptList) {
             kooptList.addAll(eenVerkoop.getKooptList());
@@ -121,20 +121,23 @@ public class BeheerPakketbeschrijvingenController {
         for(var eenBehoortTot : behoortTotList) {
             haaltAfList.addAll(eenBehoortTot.getHaaltAfList());
         }
-        for(var eenHaaltAf : haaltAfList) {
-            repo.deleteHaaltAf(eenHaaltAf);
-        }
-        for(var eenBehoortTot : behoortTotList) {
-            repo.deleteBehoortTot(eenBehoortTot);
-        }
+        System.out.println(haaltAfList);
         for(var eenKoop : kooptList) {
             repo.deleteKoopt(eenKoop);
         }
+        for(var eenHaaltAf : haaltAfList) {
+            repo.deleteHaaltAf(eenHaaltAf);
+        }
 
+        for(var eenBehoortTot : behoortTotList) {
+            repo.deleteBehoortTot(eenBehoortTot);
+        }
         for(var eenVerkoop : verkooptList) {
             repo.deleteVerkoopt(eenVerkoop);
         }
+
         repo.deletePakketbeschrijving(pakketbeschrijving);
+
         tblPakketbeschijvingen.getItems().setAll(initTable());
     }
 

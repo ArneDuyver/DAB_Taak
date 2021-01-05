@@ -80,4 +80,10 @@ public class BehoortTot {
     public void setHaaltAfList(List<HaaltAf> haaltAfList) {
         this.haaltAfList = haaltAfList;
     }
+
+    @Override
+    public String toString() {
+        return   "behoortTotId=" + behoortTotId +
+                ", weekNummer=" + weekNummer;
+    }
 }

@@ -106,4 +106,7 @@ public class Boerderij {
     public void addOpbrengst(int prijs) {
         this.opbrengst = opbrengst + prijs;
     }
+
+    public void subOpbrengst(int prijs) {this.opbrengst = opbrengst - prijs;}
+
 }

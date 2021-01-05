@@ -1,6 +1,7 @@
 package be.kuleuven.csa.domain;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.List;
 
 public class csaRepositoryJpaImpl implements csaRepository {
@@ -182,6 +183,15 @@ public class csaRepositoryJpaImpl implements csaRepository {
     }
 
     @Override
+    public List<Verkoopt> getVerkopenPakketbeschrijving(Pakketbeschrijving pakketbeschrijving) {
+        var criteriabuilder = entityManager.getCriteriaBuilder();
+        var query = criteriabuilder.createQuery(Verkoopt.class);
+        var root = query.from(Verkoopt.class);
+        query.where(criteriabuilder.equal(root.get("pakketbeschrijving"), pakketbeschrijving));
+        return entityManager.createQuery(query).getResultList() ;
+    }
+
+    @Override
     public void saveNewVerkoopt(Verkoopt verkoopt) {
         entityManager.getTransaction().begin();
         entityManager.persist(verkoopt);
@@ -212,17 +222,29 @@ public class csaRepositoryJpaImpl implements csaRepository {
     }
 
     @Override
-    public void saveNewKoopt(Koopt koopt) {
+    public void saveNewKoopt(Koopt koopt, boolean betaald) {
         entityManager.getTransaction().begin();
         entityManager.persist(koopt);
         entityManager.getTransaction().commit();
+        if(betaald){
+            koopt.getVerkoopt().getBoerderij().addOpbrengst(koopt.getVerkoopt().getPrijs());
+            updateBoerderij(koopt.getVerkoopt().getBoerderij());
+        }
     }
 
     @Override
-    public void updateKoopt(Koopt koopt) {
+    public void updateKoopt(Koopt koopt, boolean alBetaald, boolean nuBetaald) {
         entityManager.getTransaction().begin();
         entityManager.merge(koopt);
         entityManager.getTransaction().commit();
+        if(alBetaald == false & nuBetaald == true){
+            koopt.getVerkoopt().getBoerderij().addOpbrengst(koopt.getVerkoopt().getPrijs());
+            updateBoerderij(koopt.getVerkoopt().getBoerderij());
+        }
+        if(alBetaald == true & nuBetaald == false){
+            koopt.getVerkoopt().getBoerderij().subOpbrengst(koopt.getVerkoopt().getPrijs());
+            updateBoerderij(koopt.getVerkoopt().getBoerderij());
+        }
     }
 
     @Override
@@ -328,6 +350,27 @@ public class csaRepositoryJpaImpl implements csaRepository {
         var query = criteriabuilder.createQuery(HaaltAf.class);
         var root = query.from(HaaltAf.class);
         query.where(criteriabuilder.equal(root.get("klant"), klant));
+        return entityManager.createQuery(query).getResultList() ;
+    }
+
+    @Override
+    public List<HaaltAf> getHaaltAfBoerderij(Boerderij boerderij) {
+        var criteriabuilder = entityManager.getCriteriaBuilder();
+        var query = criteriabuilder.createQuery(HaaltAf.class);
+        var root = query.from(HaaltAf.class);
+        List<Verkoopt> verkooptList = boerderij.getVerkooptList();
+        List<Koopt> kooptList = new ArrayList<>();
+        List<Klant> klantList = new ArrayList<>();
+        for (var eenverkoop : verkooptList){
+            kooptList.addAll(eenverkoop.getKooptList());
+        }
+        for (var eenKoop: kooptList){
+            klantList.add(eenKoop.getKlant());
+        }
+
+        for(var eenKlant : klantList) {
+            query.where(criteriabuilder.equal(root.get("klant"), eenKlant));
+        }
         return entityManager.createQuery(query).getResultList() ;
     }
 

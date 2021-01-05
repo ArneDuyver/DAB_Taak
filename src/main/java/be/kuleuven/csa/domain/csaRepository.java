@@ -32,13 +32,14 @@ public interface csaRepository {
     void deletePakketbeschrijving(Pakketbeschrijving pakketbeschrijving);
 
     List<Verkoopt> getVerkopen();
+    List<Verkoopt> getVerkopenPakketbeschrijving(Pakketbeschrijving pakketbeschrijving);
     void saveNewVerkoopt(Verkoopt verkoopt);
     void updateVerkoopt(Verkoopt verkoopt);
     void deleteVerkoopt(Verkoopt verkoopt);
 
     List<Koopt> getKopen();
-    void saveNewKoopt(Koopt koopt);
-    void updateKoopt(Koopt koopt);
+    void saveNewKoopt(Koopt koopt, boolean betaald);
+    void updateKoopt(Koopt koopt, boolean albetaald, boolean nuBetaald);
     void deleteKoopt(Koopt koopt);
 
     List<PakketInhoud> getPakketinhouden();
@@ -57,10 +58,10 @@ public interface csaRepository {
     void deleteBevat(Bevat bevat);
 
     List<HaaltAf> getHaaltAf(Klant klant);
+    List<HaaltAf> getHaaltAfBoerderij(Boerderij boerderij);
     void saveNewHaaltAf(HaaltAf haaltAf);
     void updateHaaltAf(HaaltAf haaltAf);
     void deleteHaaltAf(HaaltAf haaltAf);
-
 
 
 

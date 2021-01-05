@@ -14,7 +14,7 @@
         <TextField fx:id="tfNaam" layoutX="8" layoutY="25" promptText="naam"></TextField>
         <TextField fx:id="tfAdres" layoutX="158" layoutY="25" promptText="Adres"></TextField>
         <TextField fx:id="tfEmail" layoutX="308" layoutY="25" promptText="Email"></TextField>
-        <TextField fx:id="tfRekeningnummer" layoutX="458" layoutY="25" text="Rekeningnummer"></TextField>
+        <TextField fx:id="tfRekeningnummer" layoutX="458" layoutY="25" promptText="Rekeningnummer"></TextField>
         <Text layoutX="10" layoutY="10" strokeType="OUTSIDE" strokeWidth="0.0" text="Voeg Boerderij toe" wrappingWidth="567.21875">
             <font>
                 <Font name="System Bold Italic" size="13.0" />

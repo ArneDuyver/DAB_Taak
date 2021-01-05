@@ -33,9 +33,8 @@ public class BeheerKooptVoegToeController {
     }
     public void addNewRow(){
         Koopt koopt = new Koopt(cbVerkopen.getSelectionModel().getSelectedItem(),cbKlanten.getSelectionModel().getSelectedItem(),checkbBetaald.isSelected());
-        repo.saveNewKoopt(koopt);
-        koopt.getVerkoopt().getBoerderij().addOpbrengst(koopt.getVerkoopt().getPrijs());
-        repo.updateBoerderij(koopt.getVerkoopt().getBoerderij());
+
+        repo.saveNewKoopt(koopt, checkbBetaald.isSelected());
         List<BehoortTot> behoortTotList = koopt.getVerkoopt().getBehoortTotList();
         for(var eenBehoortTot : behoortTotList) {
             repo.saveNewHaaltAf(new HaaltAf(eenBehoortTot,koopt.getKlant()));

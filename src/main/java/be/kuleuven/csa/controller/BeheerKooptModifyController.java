@@ -42,6 +42,8 @@ public class BeheerKooptModifyController {
         koopt.setBetaald(checkbBetaald.isSelected());
         koopt.setKlant(cbKlanten.getSelectionModel().getSelectedItem());
         koopt.setVerkoopt(cbVerkopen.getSelectionModel().getSelectedItem());
-        repo.updateKoopt(koopt);
+        boolean alBetaald = koopt.isBetaald();
+        boolean nuBetaald = checkbBetaald.isSelected();
+        repo.updateKoopt(koopt, alBetaald, nuBetaald);
     }
 }

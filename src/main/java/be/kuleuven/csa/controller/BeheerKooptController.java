@@ -122,15 +122,19 @@ public class BeheerKooptController {
 
     private void betaaldCurrentRow() {
         Koopt koopt = tblKoopt.getSelectionModel().getSelectedItem();
+        boolean alBetaald = koopt.isBetaald();
         koopt.setBetaald(true);
-        repo.updateKoopt(koopt);
+        boolean nuBetaald = koopt.isBetaald();
+        repo.updateKoopt(koopt,alBetaald,nuBetaald);
         tblKoopt.getItems().setAll(initTable());
 
     }
     private void NietBetaaldCurrentRow() {
         Koopt koopt = tblKoopt.getSelectionModel().getSelectedItem();
+        boolean alBetaald = koopt.isBetaald();
         koopt.setBetaald(false);
-        repo.updateKoopt(koopt);
+        boolean nuBetaald = koopt.isBetaald();
+        repo.updateKoopt(koopt, alBetaald, nuBetaald);
         tblKoopt.getItems().setAll(initTable());
 
     }

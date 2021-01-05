@@ -67,4 +67,13 @@ public class Koopt {
     public void setBetaald(boolean betaald) {
         this.betaald = betaald;
     }
+
+    @Override
+    public String toString() {
+        return    "kooptId=" + kooptId +
+                ", betaald=" + betaald +
+                ", verkoopt=(" + verkoopt +
+                ", )klant=(" + klant +
+                ')';
+    }
 }

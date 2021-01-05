@@ -73,4 +73,13 @@ public class Bevat {
     public int getBevatId() {
         return bevatId;
     }
+
+    @Override
+    public String toString() {
+        return   "bevatId=" + bevatId +
+                ", eenheid='" + eenheid + '\'' +
+                ", hoeveelheid=" + hoeveelheid +
+                ", pakketInhoud=" + pakketInhoud +
+                ", product=" + product ;
+    }
 }

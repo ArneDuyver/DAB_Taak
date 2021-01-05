@@ -16,7 +16,7 @@
         <ComboBox fx:id="cbPakketInhouden" layoutX="158" layoutY="25" promptText="pakketinhouden"></ComboBox>
         <ComboBox fx:id="cbVerkopen" layoutX="158" layoutY="60" promptText="contracten"></ComboBox>
         <TextField fx:id="tfWeeknr" layoutX="8" layoutY="25" promptText="weeknr"></TextField>
-        <Text layoutX="10" layoutY="10" strokeType="OUTSIDE" strokeWidth="0.0" text="Voeg Koop toe " wrappingWidth="567.21875">
+        <Text layoutX="10" layoutY="10" strokeType="OUTSIDE" strokeWidth="0.0" text="Voeg behoort tot toe " wrappingWidth="567.21875">
             <font>
                 <Font name="System Bold Italic" size="13.0" />
             </font>
